@@ -1,7 +1,7 @@
 //api_key=504e974f5c5070054bb46113602b8d4a
 //api_url=https://api.themoviedb.org/3
 var pageIndex = 1
-var ytId = []
+var youTubeID = []
 
 const MOVIES_URL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=504e974f5c5070054bb46113602b8d4a"
 const SERIES_URL = "https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=504e974f5c5070054bb46113602b8d4a"
@@ -24,7 +24,7 @@ window.addEventListener('load', ()=>{
 })
 async function getInfo(url, display)
 {
-    ytId = []
+    youTubeID = []
     await fetch(url).then(res=>res.json()).then(data=>display(data.results))
 }
 function getClassesByRating(rating)
@@ -42,11 +42,11 @@ async function getYouTubeID(id,type){
     for(i=0; i<data.results.length; i++){
         if(data.results[i].site==='YouTube' && data.results[i].type==='Trailer')
         {
-            ytId.push(data.results[i].key)
+            youTubeID.push(data.results[i].key)
             return
         }
     }
-    ytId.push('')
+    youTubeID.push('')
     return
 }
 function displayFeatured(movies)
@@ -87,7 +87,7 @@ function displayFeatured(movies)
             document.body.style.overflow = 'hidden'
             videoEl.style.display = 'block'
             videoEl.innerHTML = ''
-            videoEl.innerHTML = '<span><i class="fa-solid fa-xmark"></i></span><iframe width="1120" height="630" src="https://www.youtube.com/embed/'+ytId[index]+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+            videoEl.innerHTML = '<span><i class="fa-solid fa-xmark"></i></span><iframe width="1120" height="630" src="https://www.youtube.com/embed/'+youTubeID[index]+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
             main.appendChild(videoEl)
             videoEl.addEventListener('click', ()=>{
                 document.body.style.overflow = ''
@@ -131,7 +131,7 @@ function displayMovies(movies)
             document.body.style.overflow = 'hidden'
             videoEl.style.display = 'block'
             videoEl.innerHTML = ''
-            videoEl.innerHTML = '<span><i class="fa-solid fa-xmark"></i></span><iframe width="1120" height="630" src="https://www.youtube.com/embed/'+ytId[index]+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+            videoEl.innerHTML = '<span><i class="fa-solid fa-xmark"></i></span><iframe width="1120" height="630" src="https://www.youtube.com/embed/'+youTubeID[index]+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
             main.appendChild(videoEl)
             videoEl.addEventListener('click', ()=>{
                 document.body.style.overflow = ''
@@ -175,7 +175,7 @@ function displaySeries(series)
             document.body.style.overflow = 'hidden'
             videoEl.style.display = 'block'
             videoEl.innerHTML = ''
-            videoEl.innerHTML = '<span><i class="fa-solid fa-xmark"></i></span><iframe width="1120" height="630" src="https://www.youtube.com/embed/'+ytId[index]+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+            videoEl.innerHTML = '<span><i class="fa-solid fa-xmark"></i></span><iframe width="1120" height="630" src="https://www.youtube.com/embed/'+youTubeID[index]+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
             main.appendChild(videoEl)
             videoEl.addEventListener('click', ()=>{
                 document.body.style.overflow = ''
@@ -218,19 +218,19 @@ menu_list_item.forEach((list_item, index)=>{
                 {
                     pageIndex = 1
                     getInfo(FEATURED_URL+`&page=${pageIndex}`, displayFeatured)
-                    ytId = []
+                    youTubeID = []
                 }
                 if(list_item.id==='movies')
                 {
                     pageIndex = 1
                     getInfo(MOVIES_URL+`&page=${pageIndex}`, displayMovies)
-                    ytId = []
+                    youTubeID = []
                 }
                 if(list_item.id==='series')
                 {
                     pageIndex = 1
                     getInfo(SERIES_URL+`&page=${pageIndex}`, displaySeries)
-                    ytId = []
+                    youTubeID = []
                 }
                 list_item.classList.add('active')
             }
