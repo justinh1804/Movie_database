@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title>Movie database</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container"><h1 class="logo">Movie_database</h1></div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item" id="home">Home</li>
+                    <li class="menu-list-item" id="movies">Movies</li>
+                    <li class="menu-list-item" id="series">Series</li>
+                    <li class="menu-list-item" id="popular">Popular</li>
+                    <li class="menu-list-item" id="trends">Trends</li>
+                </ul>
+            </div>
+            <form id="form">
+                <input type="text" placeholder="Search..." id="search" class="search">
+            </form>
+            <div class="profile-container">
+                <img src="img/a.jpg" alt="insert pp here" class="profile-picture">
+                <div class="profile-text-container">
+                    <span class="profile-text">Profile</span>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+            <div class="toggle">
+                <i class="fa-solid fa-moon toggle-icon"></i>
+                <i class="fa-solid fa-sun toggle-icon"></i>
+                <div class="toggle-ball"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content-container" id="content-container">
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
